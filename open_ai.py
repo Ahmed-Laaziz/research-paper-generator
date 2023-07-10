@@ -1,8 +1,5 @@
 import openai
-
-# Set your OpenAI API key
-openai.api_key = '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'
-
+import uvicorn
 from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -112,7 +109,6 @@ def generate_research_paper(field : str):
 
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="localhost", port=8000)
 
 
