@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <title>Generator</title>
+
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/generate.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/owl.css">
+  <link rel="stylesheet" href="/assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="/assets/images/logo.png" alt="" style="max-width: 280px;">
+            </a>
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="has-sub">
+                <a href="#services">Services</a>
+                <ul class="sub-menu">
+                  <li><a href="/generation.html">Generator</a></li>
+                  <li><a href="/paraphrase.html">Paraphraser</a></li>
+                  <li><a href="/recommendation.html">Recommender</a></li>
+                </ul>
+              </li>
+              <li class="scroll-to-section"><a href="faqs.html">FAQs</a></li>
+              
+              <li class="scroll-to-section"><a href="#contact">Contact</a></li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+   
+  <div class="wrapper">
+    <div class="title">Scientific Article Generator</div>
+    <div class="description">
+        Generate specific sections of your research paper. Start by selecting which part of the paper you want to generate using the dropdown below. For example, you can request an abstract by providing the title of your research paper, such as <i>"Can you give me an abstract for my research paper with the Title: GLA-GCN: Global-local Adaptive Graph Convolutional Network for 3D Human?"</i>
+    </div>   
+    <div class="search_box">
+        <div class="dropdown">
+            <div class="default_option">Abstract</div>  
+            <ul>
+              <li>Abstract</li>
+              <li>Introduction</li>
+              <li>Sections</li>
+            </ul>
+        </div>
+        <div class="search_field">
+          <input type="text" class="input" placeholder="Enter the title of your research paper...">
+        </div>
+    </div>
+    <button class="generate_button">  Generate  </button>
+    <div class="container">
+        <div class="title" style="text-align: left; font-size: 20px; margin-bottom: 10px; margin-top: 25px;">
+            Generated Output
+        </div>
+    
+        <div id="editparent">
+            <div id="editControls">
+                <div class="btn-group">
+                    <a class="btn btn-xs btn-default" data-role="undo" href="#" title="Undo"><i class="fa fa-undo"></i></a>
+                    <a class="btn btn-xs btn-default" data-role="redo" href="#" title="Redo"><i class="fa fa-repeat"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-xs btn-default" data-role="bold" href="#" title="Bold"><i class="fa fa-bold"></i></a>
+                    <a class="btn btn-xs btn-default" data-role="italic" href="#" title="Italic"><i class="fa fa-italic"></i></a>
+                    <a class="btn btn-xs btn-default" data-role="underline" href="#" title="Underline"><i class="fa fa-underline"></i></a>
+                    <a class="btn btn-xs btn-default" data-role="strikeThrough" href="#" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-xs btn-default" data-role="indent" href="#" title="Blockquote"><i class="fa fa-indent"></i></a>
+                    <a class="btn btn-xs btn-default" data-role="insertUnorderedList" href="#" title="Unordered List"><i class="fa fa-list-ul"></i></a>
+                    <a class="btn btn-xs btn-default" data-role="insertOrderedList" href="#" title="Ordered List"><i class="fa fa-list-ol"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-xs btn-default" data-role="h1" href="#" title="Heading 1"><i class="fa fa-header"></i><sup>1</sup></a>
+                    <a class="btn btn-xs btn-default" data-role="h2" href="#" title="Heading 2"><i class="fa fa-header"></i><sup>2</sup></a>
+                    <a class="btn btn-xs btn-default" data-role="h3" href="#" title="Heading 3"><i class="fa fa-header"></i><sup>3</sup></a>
+                    <a class="btn btn-xs btn-default" data-role="p" href="#" title="Paragraph"><i class="fa fa-paragraph"></i></a>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-xs btn-default" data-role="copy" href="#" title="Copy to Clipboard" id="copy-btn"><i class="fa fa-copy"></i></a>
+                </div>
+            </div>
+            <div id="editor" contenteditable></div>
+            <textarea name="ticketDesc" id="editorCopy" required="required" style="display:none;"></textarea>
+        </div>
+  </div>
+  </div>
+
+   <footer id="footer">
+         <p class="text-center">This app was built by <a href="https://3dsmartfactory.csit.ma/" target="_blank">3D Smart Factory</a> interns</p>
+   </footer>     
+
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="/assets/js/isotope.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/tabs.js"></script>
+  <script src="/assets/js/popup.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+  <script>
+ $(".default_option").click(function(){
+  $(".dropdown ul").addClass("active");
+});
+
+$(".dropdown ul li").click(function(){
+  var text = $(this).text();
+  $(".default_option").text(text);
+  $(".dropdown ul").removeClass("active");
+});
+  </script>
+
+  <script>
+    jQuery(document).ready(function($) {
+	$('#editControls a').click(function(e) {
+		e.preventDefault();
+		switch($(this).data('role')) {
+			case 'h1':
+			case 'h2':
+			case 'h3':
+			case 'p':
+				document.execCommand('formatBlock', false, $(this).data('role'));
+				break;
+			default:
+				document.execCommand($(this).data('role'), false, null);
+				break;
+		}
+
+		var textval = $("#editor").html();
+		$("#editorCopy").val(textval);
+	});
+
+	$("#editor").keyup(function() {
+		var value = $(this).html();
+		$("#editorCopy").val(value);
+	}).keyup();
+	
+	$('#checkIt').click(function(e) {
+		e.preventDefault();
+		alert($("#editorCopy").val());
+	});
+});
+  </script>
+
+  <script>
+    const copyButton = document.getElementById("copy-btn");
+    const editor = document.getElementById("editor");
+    const editorCopy = document.getElementById("editorCopy");
+
+    copyButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Copy the content of the editable div to the hidden textarea
+        editorCopy.value = editor.innerHTML;
+
+        // Select the content of the hidden textarea
+        editorCopy.select();
+
+        try {
+            // Copy the selected content to clipboard
+            document.execCommand("copy");
+            alert("Copied to clipboard!");
+        } catch (error) {
+            console.error("Copy failed:", error);
+        }
+    });
+  </script>
+
+</body>
+
+</html>

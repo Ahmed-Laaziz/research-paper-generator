@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Cabin:400);
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+}
+
+body{
+  background: #f9fcff;
+  height: 100%;
+}
+
+.wrapper{
+  margin-top: 50px;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  min-height: calc(100vh - 90px); 
+  padding-bottom: 30px; 
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #f9fcff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; 
+}
+
+.description {
+    text-align: left;
+    font-size: 16px;
+    color: #6f768d;
+    margin-bottom: 30px; 
+}
+
+.wrapper .search_box{
+  width: 1200px;
+  background: linear-gradient(#ffffff, #cfeefc);
+  border-radius: 5px;
+  height: 65px;
+  display: flex;
+  padding: 10px;
+  box-shadow: 0 8px 6px -10px #b3c6ff;
+}
+
+.wrapper .search_box .dropdown{
+  width: 150px;
+  border-right: 2px solid #dde2f1;
+  color: #9fa3b1;
+  position: relative;
+  cursor: pointer;
+}
+
+.wrapper .search_box .dropdown .default_option{
+  text-transform: uppercase;
+  padding: 13px 10px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 800px;
+}
+
+.wrapper .search_box .dropdown ul{
+  position: absolute;
+  top: 70px;
+  left: -10px;
+  background: #fff;
+  width: 150px;
+  border-radius: 5px;
+  padding: 10px;
+  display: none;
+  box-shadow: 8px 8px 6px -10px #b3c6ff;
+}
+
+.wrapper .search_box .dropdown ul.active{
+  display: block;
+}
+
+.wrapper .search_box .dropdown ul li{
+  padding-bottom: 20px;
+}
+
+.wrapper .search_box .dropdown ul li:last-child{
+  padding-bottom: 0;
+}
+
+.wrapper .search_box .dropdown ul li:hover{
+  color: #6f768d;
+}
+
+.wrapper .search_box .dropdown:before{
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  border: 8px solid;
+  border-color: rgb(198,61,255) transparent transparent transparent;
+}
+
+.wrapper .search_box .search_field{
+  width: 1050px;
+  height: 100%;
+  position: relative;
+}
+
+.wrapper .search_box .search_field .input{
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 38px;
+  color: #6f768d;
+}
+
+.generate_button {
+    background: #fff;
+	background: linear-gradient(#3C09B2, #5415e8);
+	display: inline-block;
+	outline: 0;
+	border: 0;
+	cursor: pointer;
+	font-weight: 600;
+	color: #fff;
+	font-size: 16px;
+	height: 38px;
+    padding: 8px 20px 8px;
+    margin-top: 25px;
+    /*margin-left: 550px;*/
+	border-radius: 50px;
+	box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
+	transition: all .2s ease-out;
+	:hover{
+		box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
+	}	
+}
+
+.generate_button:hover {
+    background-color: #5415e8;
+}
+
+
+::-webkit-input-placeholder { 
+  color: #9fa3b1;
+}
+::-moz-placeholder {
+ color: #9fa3b1;
+}
+:-ms-input-placeholder { 
+  color: #9fa3b1;
+}
+
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: inherit;
+    font-family:"Raleway", sans-serif;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.title h1, .title h2, .title h3, .title h4 { margin: 5px; }
+.title {
+    position: relative;
+    display: block;
+    padding-bottom: 0;
+    margin-bottom: 30px;
+}
+	
+p { margin: 10px 0; }
+
+#editor {
+	resize: vertical;
+	overflow: auto;
+	line-height: 1.5;
+	background: #ffffff;
+	border: 0;
+  border-bottom: 1px solid rgb(198,61,255) ;
+	min-height: 150px;
+	box-shadow: none;
+	padding: 8px 16px;
+	margin: 0 auto;
+	font-size: 16px;
+  text-align: left;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+	#editor:focus {
+		background-color: #ffffff;
+		border-color: rgb(198,61,255);
+		box-shadow: none;
+		outline: 0 none;
+	}
+
+.btn {
+  font-family:"Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: none;
+  border-bottom: .15em solid black;
+  margin-bottom: 5px;
+  padding: 0.65em 1.3em;
+}
+.btn-xs {
+	font-size: .80em;
+	padding: .25em .75em;
+}
+
+.btn-default {
+  border-color: #d9d9d9;
+  background-image: linear-gradient(#ffffff, #f2f2f2);
+}
+	.btn-default:hover { background: linear-gradient(#f2f2f2, #e6e6e6); }

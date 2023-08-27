@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <title>Paraphraser</title>
+
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/paraphrase.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/owl.css">
+  <link rel="stylesheet" href="/assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  
+</head>
+
+<body>
+
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="/assets/images/logo.png" alt="" style="max-width: 280px;">
+            </a>
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="has-sub">
+                <a href="#services">Services</a>
+                <ul class="sub-menu">
+                  <li><a href="/generation.html">Generator</a></li>
+                  <li><a href="/paraphrase.html">Paraphraser</a></li>
+                  <li><a href="/recommendation.html">Recommender</a></li>
+                </ul>
+              </li>
+              <li class="scroll-to-section"><a href="faqs.html">FAQs</a></li>
+              
+              <li class="scroll-to-section"><a href="#contact">Contact</a></li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- Paraphrasing Tool Section -
+<section class="paraphrase-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <h1>Paraphrasing Tool</h1>
+              <div class="paraphrase-content">
+                <h2>Content</h2>
+                  <div class="paraphrase-input">
+                      <textarea id="user-input" placeholder="Enter your text to paraphrase"></textarea>
+                      <div class="paraphrase-actions">
+                          <button id="paraphrase-button">Paraphrase</button>
+                          <button id="clear-button">Clear</button>
+                      </div>
+                  </div>
+                  <div class="paraphrase-output">
+                      <h2>Paraphrased Output</h2>
+                      <p id="output-text"></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>-->
+
+    <section class="paraphrase-section">
+      <section class="content">
+          Content
+          <textarea id="my-text" placeholder="Type your text here..."></textarea>
+          <p id="result"></p>
+          <button id="paraphrase-btn">Paraphrase</button>
+      </section>
+
+      <section class="output">
+          Rewritten Text
+          <div class="boxSizing-borderBox" id="rewritten-output" placeholder="Waiting..."></div>
+          <button id="copy-btn" title="Copy to Clipboard">
+            <i class="fas fa-copy"></i> Copy
+        </button>
+      </section>
+    </section>
+
+
+   <footer id="footer">
+         <p class="text-center">This app was built by <a href="https://3dsmartfactory.csit.ma/" target="_blank">3D Smart Factory</a> interns</p>
+   </footer>     
+
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="/assets/js/isotope.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/tabs.js"></script>
+  <script src="/assets/js/popup.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+  <script>
+    var myText = document.getElementById("my-text");
+    var result = document.getElementById("result");
+    var limit = 1500;
+
+    result.textContent = 0 + "/" + limit;
+    myText.addEventListener("input",function(){
+
+    var textLength = myText.value.length;
+
+    result.textContent = textLength + "/" + limit;
+
+    if(textLength > limit){
+        myText.style.borderColor = "#ff2851";
+        result.style.color = "#ff2851";
+    }
+    else{
+        myText.style.borderColor = "#C63DFF";
+        result.style.color = "#C63DFF";
+    }
+  });
+  </script>
+
+  <script>
+    function paraphrase(text) {
+    //paraphrasing logic goes here
+    return "Paraphrased text goes here.";
+    }
+
+      //get references to elements
+      const textarea = document.getElementById("my-text");
+      const paraphraseButton = document.getElementById("paraphrase-btn");
+      const resultElement = document.getElementById("result");
+      const rewrittenOutput = document.getElementById("rewritten-output"); 
+
+    paraphraseButton.addEventListener("click", function() {
+    const inputText = textarea.value;
+    const paraphrasedText = paraphrase(inputText);
+    resultElement.textContent = paraphrasedText;
+
+    //display rewritten output
+    rewrittenOutput.textContent = paraphrasedText; 
+    });
+
+  </script>
+
+  <script>
+    document.getElementById("copy-btn").addEventListener("click", function() {
+        var outputElement = document.getElementById("rewritten-output");
+        
+        //select the text content within the output element
+        var range = document.createRange();
+        range.selectNode(outputElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        
+        //copy the selected text to clipboard
+        try {
+            var success = document.execCommand("copy");
+            var message = success ? "Copied to clipboard!" : "Failed to copy.";
+            alert(message);
+        } catch (error) {
+            console.error("Copy failed:", error);
+        }
+        
+        //clear the selection
+        window.getSelection().removeAllRanges();
+    });
+  </script>
+
+
+</body>
+
+</html>

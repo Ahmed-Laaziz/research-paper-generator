@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <title>Recommender</title>
+
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/recomd.css">
+  <link rel="stylesheet" href="/assets/css/fontawesome.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/owl.css">
+  <link rel="stylesheet" href="/assets/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  
+</head>
+
+<body>
+
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-area header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <a href="index.html" class="logo">
+              <img src="/assets/images/logo.png" alt="" style="max-width: 280px;">
+            </a>
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+              <li class="has-sub">
+                <a href="#services">Services</a>
+                <ul class="sub-menu">
+                  <li><a href="/generation.html">Generator</a></li>
+                  <li><a href="/paraphrase.html">Paraphraser</a></li>
+                  <li><a href="/recommendation.html">Recommender</a></li>
+                </ul>
+              </li>
+              <li class="scroll-to-section"><a href="faqs.html">FAQs</a></li>
+              
+              <li class="scroll-to-section"><a href="#contact">Contact</a></li>
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+   
+  <div class="container">
+  <section class="webdesigntuts-workshop">
+	<form action="/get_recommandations/" method="post">	
+        <div class="section-title">Search for Research Papers</div>
+        <div class="description">
+            Stay informed and explore a range of valuable resources to enrich your knowledge and contribute to your academic endeavors by discovering relevant scientific articles and research papers in your field.
+            Enter a topic, and our system will then furnish you with a meticulously curated selection of articles related to your chosen topic.
+        </div>	    
+		<input type="search" placeholder="Enter a topic..." name ="input_text">
+    <select name="num_rec" id="num_rec">
+      <option value="5">5 Results</option>
+      <option value="10">10 Results</option>
+      <option value="15">15 Results</option>
+      <option value="20">20 Results</option>
+    </select>		    	
+		<button>Get Recommendations</button>
+	</form>
+  </section>
+  <section class="results">
+    <ul class="article-list">
+        <!-- Articles will be dynamically added here -->
+    </ul>
+  </section>
+  </div>
+
+   <footer id="footer">
+         <p class="text-center">This app was built by <a href="https://3dsmartfactory.csit.ma/" target="_blank">3D Smart Factory</a> interns</p>
+   </footer>     
+  
+   <script>
+    const form = document.querySelector('form');
+    const articleList = document.querySelector('.article-list');
+    
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        const formData = new FormData(form);
+        const inputText = formData.get('input_text');
+        const numRec = formData.get('num_rec');
+    
+        const response = await fetch('/get_recommendations/', {
+            method: 'POST',
+            body: new URLSearchParams({ input_text: inputText, num_rec: numRec }),
+        });
+
+        
+    
+        const recommendations = await response.json();
+    
+        articleList.innerHTML = '';
+    
+        recommendations.forEach(article => {
+            const li = document.createElement('li');
+            li.classList.add('article');
+    
+            li.innerHTML = `
+                <div class="article-id">${article.id}</div>
+                <div class="article-title">${article.title}</div>
+                <div class="article-link">
+                   <a href="${article.link}" target="_blank">${article.link}</a>
+                   <i class="fas fa-external-link-alt fa-xs"></i>
+                </div>
+                <div class="article-authors">${article.authors}</div>
+                <div class="article-categories">Categories: ${article.Category}</div>
+                <div class="article-abstract">${replaceLatexWithImages(article.abstract)}</div>
+
+            `;
+    
+            articleList.appendChild(li);
+        });
+    });
+    </script>
+    
+    <style>
+      .latex-equation {
+        vertical-align: middle;
+        display: inline-block; /* Make images inline with text */
+        width: calc(0.3em + 0.3em * var(--latex-length)); 
+        height: calc(0.3em + 0.3em * var(--latex-length)); 
+      }
+    </style>
+    
+    <script>
+      function replaceLatexWithImages(text) {
+        return text.replace(/\$(.*?)\$/g, (match, latex) => {
+          const encodedLatex = encodeURIComponent(latex);
+          const imageUrl = `https://latex.codecogs.com/svg.latex?${encodedLatex}`;
+          const latexLength = latex.length;
+          return `<img src="${imageUrl}" alt="${latex}" class="latex-equation" style="--latex-length: ${latexLength}" />`;
+        });
+      }
+    </script>
+        
+    
+
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="/assets/js/isotope.min.js"></script>
+  <script src="/assets/js/owl-carousel.js"></script>
+  <script src="/assets/js/tabs.js"></script>
+  <script src="/assets/js/popup.js"></script>
+  <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>
