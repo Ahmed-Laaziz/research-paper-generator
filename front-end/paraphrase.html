@@ -146,9 +146,22 @@
 
   <script>
     function paraphrase(text) {
-    //paraphrasing logic goes here
-    return "Paraphrased text goes here.";
-    }
+    return fetch("/paraphraser", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input_paragraph: text }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        return data.paraphrased_paragraph;
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+        return "Error occurred while paraphrasing.";
+    });
+}
 
       //get references to elements
       const textarea = document.getElementById("my-text");
@@ -157,13 +170,18 @@
       const rewrittenOutput = document.getElementById("rewritten-output"); 
 
     paraphraseButton.addEventListener("click", function() {
-    const inputText = textarea.value;
-    const paraphrasedText = paraphrase(inputText);
-    resultElement.textContent = paraphrasedText;
-
-    //display rewritten output
-    rewrittenOutput.textContent = paraphrasedText; 
-    });
+      const inputText = textarea.value;
+    
+    paraphrase(inputText)
+        .then((paraphrasedText) => {
+            resultElement.textContent = paraphrasedText;
+            rewrittenOutput.textContent = paraphrasedText;
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
+});
+    
 
   </script>
 
