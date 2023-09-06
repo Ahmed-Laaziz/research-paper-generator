@@ -88,7 +88,6 @@ Chatbot
 :-------------:
 ![Imgur](https://i.ibb.co/dLkhh7h/img10.png)  
 
-- [Ahmed Laaziz] (mailto:laazizahmed72@gmail.com) - [LinkedIn]([your-linkedin-profile-link](https://www.linkedin.com/in/ahmed-laaziz-4b2168218/))
 
 ---
 
