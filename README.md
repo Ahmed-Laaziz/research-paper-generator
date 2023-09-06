@@ -1,3 +1,12 @@
+<div align="center">
+  <h1>🌟 Paper Genius 🌟 - Your Research Paper Generation Tool </h1>
+</div>
+
+
+<div align="center">
+  <img src="https://play-lh.googleusercontent.com/0SGLm0XREiam1GkErO-oXEi5LoyUExVIgfn30alJ82y0UwewSkSO6uxFq0oPmavV0Oo=w526-h296-rw" alt="Screenshot-2023-09-05-205414" border="0">
+</div>
+
 # Contexte général du projet
 Le contexte général de ce projet est centré sur la création d'un outil basé sur le traitement automatique du langage naturel (NLP) pour aider les chercheurs et les auteurs à rédiger des articles scientifiques de manière plus efficace et précise. L'objectif est de simplifier le processus de rédaction tout en garantissant la qualité et la cohérence des articles scientifiques. 
 
@@ -78,3 +87,9 @@ Articles similaires |  Suite
 Chatbot
 :-------------:
 ![Imgur](https://i.ibb.co/dLkhh7h/img10.png)  
+
+- [Ahmed Laaziz] (mailto:laazizahmed72@gmail.com) - [LinkedIn]([your-linkedin-profile-link](https://www.linkedin.com/in/ahmed-laaziz-4b2168218/))
+
+---
+
+<div align="center">⭐ Don't forget to star this repository if you find it helpful! ⭐</div>
